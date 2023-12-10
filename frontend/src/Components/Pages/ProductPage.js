@@ -3,7 +3,7 @@ const ProductPage = async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get('productId');
 
-    const response = await fetch(`http://localhost:3000/products/${productId}`);
+    const response = await fetch(`${process.env.API_BASE_URL}/products/${productId}`);
     const data = await response.json();
 
     const productPage = `
