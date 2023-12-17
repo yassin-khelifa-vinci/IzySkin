@@ -1,8 +1,9 @@
-import image1 from '../../img/cover.png';
+import image1 from '../../img/cover.jpg';
 import image2 from '../../img/cover2.jpg';
 import image3 from '../../img/cover3.jpg';
 
 import Navigate from '../Router/Navigate';
+import Navbar from '../Navbar/Navbar';
 
 const HomePage = () => {
     const homePage = `
@@ -51,5 +52,21 @@ function changeBg(){
     img.src = bg;
   }
 }
+
+// Attendez que le document soit prêt
+document.addEventListener("DOMContentLoaded", () => {
+  // Réglez la position de défilement verticale sur 0
+  window.scrollTo(0, 0);
+});
+
+if (sessionStorage.getItem('connected') === 'true') {
+  const deco = document.getElementById('deco');
+    deco.addEventListener('click', () => {
+    sessionStorage.clear();
+    Navbar();
+    Navigate('/');
+  });
+}
+
 
 export default HomePage;

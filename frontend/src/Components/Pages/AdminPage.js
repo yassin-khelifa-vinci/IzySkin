@@ -1,18 +1,18 @@
 import Navigate from '../Router/Navigate';
-import { clearPage,formatDate } from '../../utils/render';
+import { formatDate, showLoader } from '../../utils/render';
 
 const main = document.querySelector('main');
 
 const AdminPage = async () => {
-    clearPage();
+    showLoader();
     listAllUser();
 };
 
 async function listAllUser() {
-    const response = await fetch(`${process.env.API_BASE_URL}/admin/users`);
+    const response = await fetch(`http://localhost:3000/admin/users`);
     const data = await response.json();
 
-    main.innerHTML  += `
+    main.innerHTML  = `
     <h1 class="text-center my-2 mb-5">Liste des utilisateurs</h1>
     <div class="custom-table-responsive">
         <div class="list-group">
@@ -45,7 +45,7 @@ async function listAllUser() {
                 <div class="col">${user.nom}</div>
                 <div class="col">${user.prenom}</div>
                 <div class="col-2">${user.email}</div>
-                <div class="col">${formatDate(user.derniere_connexion)}</div>
+                <div class="col">${formatDate(user.updated)}</div>
                 <div class="col">${user.verified ? 'Administrateur' : 'Utilisateur'}</div>
                 <div class="col dropdown">
                     <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
