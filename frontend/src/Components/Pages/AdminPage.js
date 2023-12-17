@@ -9,7 +9,7 @@ const AdminPage = async () => {
 };
 
 async function listAllUser() {
-    const response = await fetch(`http://localhost:3000/admin/users`);
+    const response = await fetch(`${process.env.API_BASE_URL}/admin/users`);
     const data = await response.json();
 
     main.innerHTML  = `

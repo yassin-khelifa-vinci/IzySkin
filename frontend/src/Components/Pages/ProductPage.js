@@ -8,10 +8,10 @@ const ProductPage = async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get('productId');
 
-    const response = await fetch(`http://localhost:3000/products/${productId}`);
+    const response = await fetch(`${process.env.API_BASE_URL}/products/${productId}`);
     const data = await response.json();
 
-    const brands = await fetch(`http://localhost:3000/brands/${data.marque}`);
+    const brands = await fetch(`${process.env.API_BASE_URL}/brands/${data.marque}`);
     const brandData = await brands.json();
 
     const productPage = `
@@ -74,7 +74,7 @@ const ProductPage = async () => {
 
     const commentsContainer = document.querySelector('.comments-container');
 
-    const getComments = await fetch(`http://localhost:3000/products/comments/${productId}`);
+    const getComments = await fetch(`${process.env.API_BASE_URL}/products/comments/${productId}`);
     const allComments = await getComments.json();
 
     allComments.forEach((comment) => {
@@ -99,7 +99,7 @@ const ProductPage = async () => {
 };
 
 function addCommentToProduct(productId, userId, comment, numStars) {
-    fetch('http://localhost:3000/products/addComment', {
+    fetch(`${process.env.API_BASE_URL}/products/addComment`, {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json',

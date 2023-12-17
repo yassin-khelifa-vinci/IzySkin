@@ -7,7 +7,7 @@
 async function addToConnected(productIdentification, skinCareIdentification) {
   try {
     // Envoie le productID au backend
-    const response = await fetch('http://localhost:3000/quizz/addProductToSkinCare', {
+    const response = await fetch(`${process.env.API_BASE_URL}/quizz/addProductToSkinCare`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ async function addToConnected(productIdentification, skinCareIdentification) {
  */
 async function addSkinCare(skinCareName, userId) {
   try {
-    const response = await fetch('http://localhost:3000/user/skinCare/add', {
+    const response = await fetch(`${process.env.API_BASE_URL}/user/skinCare/add`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -64,7 +64,7 @@ async function addSkinCare(skinCareName, userId) {
 async function getLastSkinCareId(userId) {
   try {
     const listSkinCareResponse = await fetch(
-      `http://localhost:3000/user/skinCares/last?userId=${userId}`,
+      `${process.env.API_BASE_URL}/user/skinCares/last?userId=${userId}`,
     );
     if (!listSkinCareResponse.ok) {
       throw new Error('Failed to get last skincare routine ID');
@@ -78,7 +78,7 @@ async function getLastSkinCareId(userId) {
 }
 
 async function getProducts(productID) {
-  const getProduct = await fetch(`http://localhost:3000/products/${productID}`);
+  const getProduct = await fetch(`${process.env.API_BASE_URL}/products/${productID}`);
   const data = await getProduct.json();
   return data;
 }

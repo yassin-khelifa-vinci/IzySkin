@@ -96,7 +96,7 @@ registerBtn.addEventListener('click', () => {
 
 function registerUser(userName, passwd, userEmail, lastname, firstname, photo) {
   try{
-    fetch('http://localhost:3000/auths/register', {
+    fetch(`${process.env.API_BASE_URL}/auths/register`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

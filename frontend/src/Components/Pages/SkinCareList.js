@@ -12,10 +12,10 @@ const Userlist = () => {
 async function listSkinCare(){
     let accordionCounter = 1; // Variable compteur pour générer des ID uniques
 
-    const listSkinCareResponse = await fetch(`http://localhost:3000/admin/skinCares?userId=${sessionStorage.getItem('userId')}`);
+    const listSkinCareResponse = await fetch(`${process.env.API_BASE_URL}/admin/skinCares?userId=${sessionStorage.getItem('userId')}`);
     const data = await listSkinCareResponse.json();
 
-    const userResponse = await fetch(`http://localhost:3000/admin/users?userId=${sessionStorage.getItem('userId')}`);
+    const userResponse = await fetch(`${process.env.API_BASE_URL}/admin/users?userId=${sessionStorage.getItem('userId')}`);
     const userData = await userResponse.json();
     const userFound = userData[0];
 

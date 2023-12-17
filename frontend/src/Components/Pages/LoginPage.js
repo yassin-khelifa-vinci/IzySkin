@@ -99,7 +99,7 @@ const LoginPage = () => {
  */
 async function loginUser(userName, passwd) {
   try {
-    const response = await fetch('http://localhost:3000/auths/login', {
+    const response = await fetch(`${process.env.API_BASE_URL}/auths/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

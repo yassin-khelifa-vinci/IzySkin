@@ -12,7 +12,7 @@ const ResultsPage = () => {
 async function results() {
     console.log(sessionStorage.getItem('userId'));
 
-    const listSkinCareResponse = await fetch(`http://localhost:3000/admin/skinCares?userId=${sessionStorage.getItem('userId')}`);
+    const listSkinCareResponse = await fetch(`${process.env.API_BASE_URL}/admin/skinCares?userId=${sessionStorage.getItem('userId')}`);
     const data = await listSkinCareResponse.json();
 
     const morningRoutine = data.filter((skinCare) => skinCare.type === "matin");
@@ -20,7 +20,7 @@ async function results() {
     const morningRoutineLayout = generateRoutineLayout(morningRoutine);
     const nightRoutineLayout = generateRoutineLayout(nightRoutine);
 
-    const userResponse = await fetch(`http://localhost:3000/admin/users?userId=${sessionStorage.getItem('userId')}`);
+    const userResponse = await fetch(`${process.env.API_BASE_URL}/admin/users?userId=${sessionStorage.getItem('userId')}`);
     const userData = await userResponse.json();
     const userFound = userData[0];
 

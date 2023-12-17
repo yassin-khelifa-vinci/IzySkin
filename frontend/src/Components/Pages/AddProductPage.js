@@ -4,7 +4,7 @@ const main = document.querySelector('main');
 showLoader();
 const AddProductPage = async () => {
     try {
-    const brands = await fetch(`http://localhost:3000/brands`);
+    const brands = await fetch(`${process.env.API_BASE_URL}/brands`);
     
     const brandsNames = await brands.json();
     const brandsSelectOptions = selectBrands(brandsNames);

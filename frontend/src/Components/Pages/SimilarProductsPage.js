@@ -7,7 +7,7 @@ const SimilarProductsPage = async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get('productId');
 
-    const data = await (await fetch(`http://localhost:3000/products/similar/${productId}`)).json();
+    const data = await (await fetch(`${process.env.API_BASE_URL}/products/similar/${productId}`)).json();
 
     const productsHtml = data.map((product) => `
             <div class="col-sm d-flex">

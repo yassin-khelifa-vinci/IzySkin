@@ -68,7 +68,7 @@ function AskUser() {
 async function quizz() {
   let currentQuestionIndex = 0;
   try {
-    const getAllQuestions = await fetch(`http://localhost:3000/quizz/questions`);
+    const getAllQuestions = await fetch(`${process.env.API_BASE_URL}/quizz/questions`);
     if (!getAllQuestions.ok) {
       throw new Error('Failed to get quiz questions');
     }
